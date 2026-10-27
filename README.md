@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
-<title>MarketPlace</title>
+<title>Shoply</title>
 <style>
 :root{
   --bg:#f3f6f8;--card:#fff;--ink:#14202b;--mute:#5d6b78;--line:#d9e1e7;
@@ -69,7 +69,7 @@ footer{color:var(--mute);font-size:13px;text-align:center;padding:20px 0 30px}
 <header>
   <div class="wrap">
     <div class="bar">
-      <div class="logo">Market<span>Place</span></div>
+      <div class="logo">Shop<span>ly</span></div>
       <button class="btn ghost" id="sellBtn">Продать</button>
       <button class="btn" id="cartBtn">Корзина · <b id="cnt">0</b></button>
     </div>
@@ -120,16 +120,16 @@ var items=SEED.slice(), cart={}, cat="Все";
 
 function load(){
   try{
-    var u=JSON.parse(localStorage.getItem("mp_items")||"[]");
+    var u=JSON.parse(localStorage.getItem("shoply_items")||"[]");
     if(Array.isArray(u)) items=SEED.concat(u);
-    var c=JSON.parse(localStorage.getItem("mp_cart")||"{}");
+    var c=JSON.parse(localStorage.getItem("shoply_cart")||"{}");
     if(c&&typeof c==="object") cart=c;
   }catch(e){}
 }
 function save(){
   try{
-    localStorage.setItem("mp_items",JSON.stringify(items.filter(function(i){return i.id>1000})));
-    localStorage.setItem("mp_cart",JSON.stringify(cart));
+    localStorage.setItem("shoply_items",JSON.stringify(items.filter(function(i){return i.id>1000})));
+    localStorage.setItem("shoply_cart",JSON.stringify(cart));
   }catch(e){}
 }
 function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
@@ -198,4 +198,3 @@ load();renderChips();renderGrid();renderCart();
 </script>
 </body>
 </html>
-
